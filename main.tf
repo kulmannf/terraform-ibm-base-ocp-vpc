@@ -540,7 +540,8 @@ module "attach_sg_to_lb" {
 ##############################################################################
 
 data "ibm_is_virtual_endpoint_gateways" "all_vpes" {
-  depends_on = [ibm_container_vpc_cluster.cluster, ibm_container_vpc_worker_pool.pool, ibm_container_vpc_worker_pool.autoscaling_pool, null_resource.confirm_network_healthy]
+  depends_on     = [ibm_container_vpc_cluster.cluster, ibm_container_vpc_worker_pool.pool, ibm_container_vpc_worker_pool.autoscaling_pool, null_resource.confirm_network_healthy]
+  resource_group = var.resource_group_id
 }
 
 locals {
